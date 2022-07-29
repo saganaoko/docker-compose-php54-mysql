@@ -1,0 +1,23 @@
+version: "3"
+services:
+  php54:
+    build: ./php
+    container_name: php54
+    ports:
+      - 8081:80
+    volumes:
+      - ${PHP_VOLUME_PATH_HOST}:${PHP_VOLUME_PATH_CONTAINER}
+    privileged: true
+  mysql5:
+    build: ./mysql
+    container_name: mysql5
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports: 
+      - 3306:3306
+    volumes:
+      - ${MYSQL_VOLUME_PATH_HOST}:/var/lib/mysql
+
