@@ -1,6 +1,6 @@
 FROM centos:centos7
 RUN yum install -y epel-release unzip
-RUN yum install -y php php-mcrypt php-mbstring php-pdo php-xml
+RUN yum install -y php php-mcrypt php-mbstring php-pdo php-xml php-mysql
 RUN yum -y install httpd; yum clean all; systemctl enable httpd.service
 EXPOSE 80
 COPY conf.d/* /etc/httpd/conf.d/
